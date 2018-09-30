@@ -140,7 +140,7 @@ class VerisureHub:
             return False
         return True
 
-    @Throttle(timedelta(seconds=60))
+    @Throttle(timedelta(seconds=1800))
     def update_overview(self):
         """Update the overview."""
         try:
@@ -153,12 +153,12 @@ class VerisureHub:
             else:
                 raise
 
-    @Throttle(timedelta(seconds=60))
+    @Throttle(timedelta(seconds=1800))
     def update_smartcam_imageseries(self):
         """Update the image series."""
         self.imageseries = self.session.get_camera_imageseries()
 
-    @Throttle(timedelta(seconds=30))
+    @Throttle(timedelta(seconds=1800))
     def smartcam_capture(self, device_id):
         """Capture a new image from a smartcam."""
         self.session.capture_image(device_id)
